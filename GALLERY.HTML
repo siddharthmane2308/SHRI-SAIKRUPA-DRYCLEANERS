@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dry Cleaning Gallery</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body and overall page styles */
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar h1 {
+            font-size: 36px;
+            margin-right: 50px;
+        }
+
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar nav a:hover {
+            color: #18bc9c;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .gallery h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Image Styles */
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #f1f1f1;
+            font-size: 35px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #18bc9c;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>SHREE SAI KRUPA DRYCLEANERS</h1>
+            
+        </div>
+    </header>
+
+    <section class="gallery">
+        <h2>Our Work</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/354176961/OZ/HI/DX/501942/curtain-press-table-500x500.jpg" alt="Dry Cleaning 1" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="https://www.universaldrycleaningsolutions.com.au/wp-content/uploads/Unipress-3TZ-Triple-Head-Collar-Cuff.jpg" alt="Dry Cleaning 2" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="https://www.welcogm.com/correct_documents/commercial%20laundry%20equipment/3%20in%20one%20(7).jpg" alt="Dry Cleaning 3" class="gallery-image" onclick="openModal(this)">
+            </div>
+            <div class="gallery-item">
+                <img src="https://media.istockphoto.com/id/1329135522/photo/stack-of-folded-clean-sheets-surgical-clothes-and-industrial-iron-in-an-industrial-laundry.jpg?s=612x612&w=0&k=20&c=0IEKirVnN0C9m2XHIRdDF0HQjruZx_E4fY5Df6qyqLc=" alt="Dry Cleaning 4" class="gallery-image" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Image View -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SHRI SAI-KRUPA DRYCLEANERS. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Open Modal Function
+        function openModal(image) {
+            var modal = document.getElementById('imageModal');
+            var modalImg = document.getElementById('modalImage');
+            modal.style.display = "block";
+            modalImg.src = image.src;
+        }
+
+        // Close Modal Function
+        function closeModal() {
+            var modal = document.getElementById('imageModal');
+            modal.style.display = "none";
+        }
+
+        // Close modal if clicked outside the image
+        window.onclick = function(event) {
+            var modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
