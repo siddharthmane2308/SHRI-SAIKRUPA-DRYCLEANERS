@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHRI SAI-KRUPA DRYCLEANERS</title>
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html, body {
+            scroll-behavior: smooth;
+            background: #fdfdfd;
+            color: #222;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .logo img {
+            width: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: rotate(-5deg) scale(1.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            margin: 0 20px;
+            font-weight: 600;
+            position: relative;
+            transition: 0.4s;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #0077ff;
+            bottom: -5px;
+            left: 0;
+            transition: 0.4s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            background: linear-gradient(120deg, #e0f0ff, #f9f9f9);
+            padding: 0 60px;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1.2s ease;
+        }
+
+        .hero-text h1 {
+            font-size: 60px;
+            color: #0077ff;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .hero-text button {
+            padding: 12px 30px;
+            background: #0077ff;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hero-text button:hover {
+            background: #005fcc;
+            transform: translateY(-2px);
+        }
+
+        .hero-image img {
+            width: 100%;
+            transform: scale(1.1);
+            animation: fadeInRight 1.5s ease;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 100px 60px;
+            background: #fff;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.4s;
+        }
+
+        .service:hover {
+            transform: translateY(-5px);
+        }
+
+        .service img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            color: #0077ff;
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* ABOUT */
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+            padding: 100px 60px;
+            background: linear-gradient(120deg, #e0f0ff, #f9f9f9);
+        }
+
+        .about img {
+            flex: 1;
+            width: 100%;
+            border-radius: 15px;
+            animation: zoomIn 1s ease;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: #0077ff;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* CONTACT */
+        .contact {
+            padding: 100px 60px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background: #0077ff;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact button:hover {
+            background: #005fcc;
+        }
+
+        footer {
+            background: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            color: #777;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInLeft {
+            0% {opacity: 0; transform: translateX(-50px);}
+            100% {opacity: 1; transform: translateX(0);}
+        }
+
+        @keyframes fadeInRight {
+            0% {opacity: 0; transform: translateX(50px);}
+            100% {opacity: 1; transform: translateX(0);}
+        }
+
+        @keyframes zoomIn {
+            0% {opacity: 0; transform: scale(0.8);}
+            100% {opacity: 1; transform: scale(1);}
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 0 20px;
+            }
+            header {
+                padding: 20px;
+            }
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+       
+
+        <nav>
+            <a href="gallery.html">Gallery</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+           <I> <h1>SHRI SAI-KRUPA DRYCLEANERS </h1></I>
+            <p>Premium Dry Cleaning & Laundry Services at your doorstep.</p>
+            <a href="tel:+918600075445"> <button>Call Now</button></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://acleanerworld.com/sites/default/files/2022-02/GettyImages-1180989757.jpg" alt="Dry Cleaned Clothes">
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our profession</h2>
+        <div class="service-grid">
+            <div class="service">
+                <img src="https://www.thespruce.com/thmb/76OEC26jhvWeqbvoFsUguujcVFU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/what-really-happens-at-the-drycleaner-0634-4278c18999dc438ca84df2e58abccd81.jpg" alt="Dry Cleaning">
+                <h3>Dry Cleaning</h3>
+                <p>Exceptional fabric care & stain removal for all your garments.</p>
+            </div>
+            <div class="service">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/9/342786948/WQ/EV/JY/156887289/express-laundry-and-dry-cleaning-service-24-hours.jpg" alt="Laundry">
+                <h3>Express Laundry</h3>
+                <p>Quick & professional wash & fold laundry services.</p>
+            </div>
+            <div class="service">
+                <img src="https://washmate.com.au/wp-content/uploads/2024/07/2148521025-1.webp" alt="Ironing">
+                <h3>Ironing Service</h3>
+                <p>Get that perfect crease with our premium ironing service.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="about" id="about">
+        <div class="about-text">
+            <h2>Why Choose Us?</h2>
+            <p>With over 7 years of experience, we provide professional dry cleaning and laundry services. Your clothes deserve the best care, and we make sure to deliver it every time.</p>
+        </div>
+    </section>
+
+
+
+    <!-- Statistics Section -->
+   <section class="stats-section">
+    <h2 class="stats-title">Our Achievement</h2>
+    <h3 class="stats-subtitle">Let's See Company Statistics</h3>
+    <div class="stats-container">
+      <div class="stat-box" data-count="980">
+        <img src="https://bhavanadrycleaners.com/images/counter_icon_5.png" alt="Happy Clients" class="stat-icon">
+        <h3 class="stat-number">0</h3>
+        <p>Happy Clients</p>
+      </div>
+      <div class="stat-box" data-count="18000">
+        <img src="https://bhavanadrycleaners.com/images/counter_icon_6.png" alt="Project Complete" class="stat-icon">
+        <h3 class="stat-number">0</h3>
+        <p>Project Complete</p>
+      </div>
+      <div class="stat-box" data-count="20">
+        <img src="https://bhavanadrycleaners.com/images/counter_icon_7.png" alt="Team Members" class="stat-icon">
+        <h3 class="stat-number"></h3>
+        <p>Team Members</p>
+      </div>
+      <div class="stat-box" data-count="10">
+        <img src="https://bhavanadrycleaners.com/images/counter_icon_8.png" alt="Years Experience" class="stat-icon">
+        <h3 class="stat-number">0</h3>
+        <p>Years Experience</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CSS Styles -->
+  <style>
+  .stats-section {
+    text-align: center;
+    background: linear-gradient(to bottom, #002f6c, #ffffff);
+    padding: 50px 20px;
+  }
+  .stats-title {
+    color: white;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .stats-subtitle {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .stat-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .stat-box:hover {
+    transform: scale(1.1);
+  }
+  .stat-icon {
+    width: 50px;
+    margin-bottom: 10px;
+  }
+  .stat-number {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  </style>
+  
+  <!-- JavaScript for Counting Animation -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const statBoxes = document.querySelectorAll(".stat-box");
+      
+      function startCounter(element, count) {
+        let current = 0;
+        let speed = Math.floor(2000 / count);
+        
+        let counter = setInterval(() => {
+          current += Math.ceil(count / 50);
+          if (current >= count) {
+            current = count;
+            clearInterval(counter);
+          }
+          element.textContent = current + "+";
+        }, speed);
+      }
+  
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              let count = parseInt(entry.target.getAttribute("data-count"));
+              let numberElement = entry.target.querySelector(".stat-number");
+              startCounter(numberElement, count);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+  
+      statBoxes.forEach((box) => observer.observe(box));
+    });
+  </script>
+  
+  
+    <section id="services" style="padding: 60px 20px; background: #f9f9f9;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+          <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #2a4d7b;">Our Services</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <!-- Service Card -->
+            <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); transition: 0.3s ease;">
+              <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <img src="https://us.123rf.com/450wm/mariiasimakova/mariiasimakova2004/mariiasimakova200400721/145777469-stan-removal-icon-simple-illustration-from-laundry-collection-creative-stan-removal-icon-for-web.jpg?ver=6" alt="Stain Removal Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+                <h3 style="color: #004b9b; font-size: 1.25rem;">Expert Stain Removal</h3>
+              </div>
+              <p style="color: #444;">We constantly train our staff to remove spots and stains such as ink, grass stain, food and beverage stains, blood, grease, salad dressings and other difficult stains.</p>
+            </div>
+      
+            <!-- Service Card -->
+            <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); transition: 0.3s ease;">
+              <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <img src="https://blog.planetcare.org/wp-content/uploads/2021/07/final-1024x768.jpg" alt="Clothing Care Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+                <h3 style="color: #004b9b; font-size: 1.25rem;">Clothing Care</h3>
+              </div>
+              <p style="color: #444;">State-of-the-art equipment and personal attention to detail assure you of the finest quality casual clothes cleaning and finishing.</p>
+              <a href="#" style="color: #004b9b; text-decoration: underline;">Clothing Care</a>
+            </div>
+      
+            <!-- Service Card -->
+            <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); transition: 0.3s ease;">
+              <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <img src="https://img.freepik.com/premium-vector/home-cleaning-service-logo-design-template_681147-428.jpg?semt=ais_hybrid" alt="Household Cleaning Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+                <h3 style="color: #004b9b; font-size: 1.25rem;">Household Items Cleaning</h3>
+              </div>
+              <p style="color: #444;">Regular cleaning of your draperies, tablecloths, pillows and rugs is a cost-effective and easy alternative to replacement.</p>
+              <a href="#" style="color: #004b9b; text-decoration: underline;">Household Items</a>
+            </div>
+      
+            <!-- Service Card -->
+            <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); transition: 0.3s ease;">
+              <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <img src="https://www.citypng.com/public/uploads/preview/red-rectangular-free-delivery-stamp-icon-701751695127921urdqkntpfz.png" alt="Pickup Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+                <h3 style="color: #004b9b; font-size: 1.25rem;">Free Delivery</h3>
+              </div>
+              <p style="color: #444;">Anything you can bring to one of our stores, we can pick up at your front door for free.</p>
+            </div>
+      
+            <!-- Service Card -->
+            <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); transition: 0.3s ease;">
+              <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <img src="https://media.istockphoto.com/id/1143903980/vector/abstract-medical-cross-star-color-creative-medical-vector-type.jpg?s=612x612&w=0&k=20&c=k9BoAvBvW1syHlPTMg34jznhBIerQh5Q6k2u-gX4xMY=" alt="Express Bag Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+                <h3 style="color: #004b9b; font-size: 1.25rem;">Ironing/steam press</h3>
+              </div>
+              <p style="color: #444;">We are also providing best quality Ironing/steam press services</p>
+            </div>
+      
+            <!-- Service Card -->
+            <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.05); transition: 0.3s ease;">
+              <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/023/392/984/small/same-day-delivery-rubber-stamp-seal-vector.jpg" alt="Same Day Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+                <h3 style="color: #004b9b; font-size: 1.25rem;">Shoes Washing</h3>
+              </div>
+              <p style="color: #444;">We are also providing best quality shoes washing service</p>
+            </div>
+      
+          </div>
+        </div>
+      </section>
+
+      
+      
+    <!-- Customer Reviews Section -->
+    <section class="customer-reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="reviews-slider">
+            <div class="review active">
+                <p>"Absolutely fantastic service! Will shop again."</p>
+                <div class="stars">★★★★★</div>
+                <span>-Harish marne</span>
+            </div>
+            <div class="review">
+                <p>"Quality exceeded expectations. Highly recommended!"</p>
+                <div class="stars">★★★★☆</div>
+                <span>- Sujal bhalerao</span>
+            </div>
+            <div class="review">
+                <p>"The best purchase experience I've had in a long time!"</p>
+                <div class="stars">★★★★★</div>
+                <span>- Shubham chavan</span>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prev">&larr;</button>
+            <button id="next">&rarr;</button>
+        </div>
+    </section>
+    
+    <!-- CSS Styles -->
+    <style>
+        .customer-reviews {
+            text-align: center;
+            margin: 50px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            position: relative;
+        }
+    
+        h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+        .reviews-slider {
+            position: relative;
+            height: 120px;
+            overflow: hidden;
+        }
+    
+        .review {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+    
+        .review.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .review p {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+    
+        .stars {
+            font-size: 20px;
+            color: gold;
+            margin: 5px 0;
+        }
+    
+        .review span {
+            font-weight: bold;
+            display: block;
+        }
+    
+        .controls {
+            margin-top: 15px;
+        }
+    
+        .controls button {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+    
+        .controls button:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+    </style>
+    
+    <!-- JavaScript for Review Slider -->
+    <script>
+        let currentIndex = 0;
+        const reviews = document.querySelectorAll('.review');
+        const totalReviews = reviews.length;
+    
+        function showReview(index) {
+            reviews.forEach((review, i) => {
+                review.classList.remove('active');
+                if (i === index) review.classList.add('active');
+            });
+        }
+    
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalReviews;
+            showReview(currentIndex);
+        });
+    
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalReviews) % totalReviews;
+            showReview(currentIndex);
+        });
+    
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalReviews;
+            showReview(currentIndex);
+        }, 4000); // Auto-slide every 4 seconds
+    
+        showReview(currentIndex);
+    </script>  
+
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="4" placeholder="Your Message" required></textarea>
+           <button type="submit">Send Message</button></a>
+        </form>
+    </section>
+    <footer style="background: #1c1c1c; padding: 40px; color: #ccc; font-family: Arial, sans-serif; display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <div style="flex: 1 1 300px; margin-bottom: 20px;">
+            <h2 style="color: white; font-weight: bold;"> <span style="font-weight: normal;">OUR PROMISE</span></h2>
+            <p style="margin-top: 15px; line-height: 1.6;">We are a team of passionate people whose goal is to improve everyone's life through disruptive products. We build great products to solve your business problems. Our products are designed for small to medium size companies willing to optimize their performance.</p>
+        </div>
+    
+        <div style="flex: 1 1 150px; margin-bottom: 20px;">
+            <h4 style="color: #eee; font-weight: bold;">OUR ADDRESS</h4>
+            
+            <p>Shop B9, Audumbar Complex, 26/1, Narhe Gaon Rd, Narhe, Pune, Maharashtra 411041</p>
+        </div>
+    
+        <div style="flex: 1 1 200px; margin-bottom: 20px;">
+            <p style="margin-bottom: 10px;"><span style="color: #0d6efd;">📞</span> +91 8600075445</p>
+            <p style="margin-bottom: 10px;"><span style="color: #0d6efd;">✉️</span> Shrisaikrupadrycleaners@gmail.com</p>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <a href="#" style="color: #0d6efd; text-decoration: none; font-size: 1.3rem;"></a>
+                <a href="#" style="color: #0d6efd; text-decoration: none; font-size: 1.3rem;"></a>
+                <a href="#" style="color: #0d6efd; text-decoration: none; font-size: 1.3rem;"></a>
+                <a href="#" style="color: #0d6efd; text-decoration: none; font-size: 1.3rem;"></a>
+            </div>
+        </div>  
+        <div style="flex: 1 1 100%; text-align: center; margin-top: 30px; color: #aaa; font-size: 0.85rem;">
+            <p>Copyright © SHRI SAI-KRUPA DRYCLEANERS</p>
+            <p style="margin-top: 5px;">Powered by <strong>SIDDHARTH</strong>
+            </a></p>
+        </div>
+    </footer>
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 10px;
+            background-color: #fcfffd;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+        }
+        .whatsapp-icon {
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/8600075445" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9ulKJl8weaCGiz618j2drFjUxiGRGSX4spA&s" height="60px" > <i class="whatsapp-icon"></i>
+    </a>
+  
+</body>
+</html>
